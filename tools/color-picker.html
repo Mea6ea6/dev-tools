@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./color-picker.css" />
+    <title>Color Picker</title>
+  </head>
+  <body class="background">
+    <div class="page">
+      <main class="content">
+        <div class="picker">
+          <div class="picker__left">
+            <div class="picker__canvas-wrapper">
+              <canvas class="picker__canvas" id="colorCanvas"></canvas>
+              <div class="picker__cursor" id="cursor"></div>
+            </div>
+            <div class="picker__hue-wrapper">
+              <canvas class="picker__hue" id="hueCanvas"></canvas>
+              <div class="picker__hue-cursor" id="hueCursor"></div>
+            </div>
+          </div>
+
+          <div class="picker__right">
+            <div class="picker__preview-row">
+              <div class="picker__preview" id="colorPreview"></div>
+              <button
+                class="picker__eyedropper"
+                id="eyedropperBtn"
+                title="Pick color from screen"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M12 2l4 4-9.5 9.5a2 2 0 0 1-2.8 0l-.7-.7a2 2 0 0 1 0-2.8Z"
+                  />
+                  <path d="m15 5 1.5 1.5" />
+                  <path d="m3 21 2.5-2.5" />
+                </svg>
+                Eyedropper
+              </button>
+              <p class="picker__eyedropper-note" id="eyedropperNote">
+                Not supported in this browser
+              </p>
+            </div>
+
+            <div class="picker__codes">
+              <div class="picker__code-row">
+                <span class="picker__code-label">HEX</span>
+                <input
+                  class="picker__code-value"
+                  id="hexValue"
+                  value="#FF0000"
+                  spellcheck="false"
+                />
+                <button
+                  class="picker__copy"
+                  data-target="hexValue"
+                  title="Copy HEX"
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect x="9" y="9" width="13" height="13" rx="2" />
+                    <path
+                      d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                    />
+                  </svg>
+                </button>
+              </div>
+
+              <div class="picker__code-row">
+                <span class="picker__code-label">RGB</span>
+                <span class="picker__code-value" id="rgbValue"
+                  >rgb(255, 0, 0)</span
+                >
+                <button
+                  class="picker__copy"
+                  data-target="rgbValue"
+                  title="Copy RGB"
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect x="9" y="9" width="13" height="13" rx="2" />
+                    <path
+                      d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="picker__code-row">
+                <span class="picker__code-label">HSL</span>
+                <span class="picker__code-value" id="hslValue"
+                  >hsl(0, 100%, 50%)</span
+                >
+                <button
+                  class="picker__copy"
+                  data-target="hslValue"
+                  title="Copy HSL"
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect x="9" y="9" width="13" height="13" rx="2" />
+                    <path
+                      d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="picker__sliders">
+              <div class="picker__slider-row">
+                <span class="picker__slider-label">H</span>
+                <input
+                  class="picker__slider picker__slider_h"
+                  id="sliderH"
+                  type="range"
+                  min="0"
+                  max="360"
+                  value="0"
+                />
+                <span class="picker__slider-value" id="sliderHValue">0</span>
+              </div>
+              <div class="picker__slider-row">
+                <span class="picker__slider-label">S</span>
+                <input
+                  class="picker__slider picker__slider_s"
+                  id="sliderS"
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="100"
+                />
+                <span class="picker__slider-value" id="sliderSValue">100</span>
+              </div>
+              <div class="picker__slider-row">
+                <span class="picker__slider-label">L</span>
+                <input
+                  class="picker__slider picker__slider_l"
+                  id="sliderL"
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="50"
+                />
+                <span class="picker__slider-value" id="sliderLValue">50</span>
+              </div>
+            </div>
+
+            <div class="picker__history" id="colorHistory">
+              <span class="picker__history-label">Recent</span>
+              <div class="picker__history-colors" id="historyColors"></div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="../components/Hue.js" defer></script>
+    <script src="../components/Canvas.js" defer></script>
+    <script src="../components/Color.js" defer></script>
+    <script src="../components/History.js" defer></script>
+    <script src="../components/Sliders.js" defer></script>
+    <script src="../components/Eyedropper.js" defer></script>
+    <script src="../components/Copy.js" defer></script>
+    <script src="../components/Input.js" defer></script>
+    <script src="./color-picker.js" defer></script>
+  </body>
+</html>

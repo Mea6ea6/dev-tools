@@ -1,0 +1,144 @@
+@import url("../vendor/fonts.css");
+@import url("../vendor/normalize.css");
+@import url("../variables/root.css");
+
+.background {
+  background-color: var(--dark);
+  min-height: 100vh;
+}
+
+.page {
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 80px 24px;
+  font-family: var(--main-font);
+  color: var(--white);
+}
+
+.home-header {
+  margin-bottom: 60px;
+}
+
+.home-title {
+  font-size: 40px;
+  font-weight: 700;
+  font-family: var(--main-font);
+  color: var(--pure-white);
+  margin-bottom: 10px;
+  line-height: 1.1;
+}
+
+.home-subtitle {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.home-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tool-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
+  background-color: var(--heavy-gray);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.06);
+  color: var(--white);
+  text-decoration: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.tool-card:hover {
+  background-color: var(--medium-gray);
+  border-color: rgba(255,255,255,0.12);
+  transform: translateY(-2px);
+}
+
+.tool-card_soon {
+  opacity: 0.45;
+  cursor: default;
+  pointer-events: none;
+}
+
+.tool-card__icon {
+  width: 56px;
+  height: 56px;
+  background-color: var(--medium-gray);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--white);
+}
+
+.tool-card_soon .tool-card__icon {
+  background-color: var(--dark);
+}
+
+.tool-card__text {
+  flex: 1;
+}
+
+.tool-card__title {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--pure-white);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tool-card__badge {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--muted);
+  background-color: var(--dark);
+  padding: 2px 8px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.tool-card__desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.tool-card__arrow {
+  font-size: 20px;
+  color: var(--muted);
+  flex-shrink: 0;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.tool-card:hover .tool-card__arrow {
+  transform: translateX(4px);
+  color: var(--white);
+}
+
+@media screen and (max-width: 600px) {
+  .page {
+    padding: 48px 16px;
+  }
+  .home-title {
+    font-size: 28px;
+  }
+  .tool-card {
+    padding: 18px;
+    gap: 14px;
+  }
+  .tool-card__icon {
+    width: 44px;
+    height: 44px;
+  }
+}

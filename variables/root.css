@@ -1,0 +1,16 @@
+:root {
+    --main-font: 'Space Grotesk', sans-serif;
+    --mono-font: 'JetBrains Mono', monospace;
+    --max-width: 1440px;
+
+    --black: #0A0A0A;
+    --dark: #141414;
+    --heavy-gray: #1E1E1E;
+    --medium-gray: #3A3A3A;
+    --light-gray: #6B6B6B;
+    --muted: #9B9B9B;
+    --white: #F5F5F5;
+    --pure-white: #FFFFFF;
+
+    --transition: all 0.2s ease;
+}

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <title>Dev Tools</title>
+  </head>
+  <body class="background">
+    <div class="page">
+      <header class="home-header">
+        <h1 class="home-title">Dev Tools</h1>
+        <p class="home-subtitle">A collection of simple tools for developers</p>
+      </header>
+      <main class="home-grid">
+        <a class="tool-card" href="./tools/color-picker.html">
+          <div class="tool-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="13.5" cy="6.5" r="2.5"/>
+              <circle cx="6.5" cy="12" r="2.5"/>
+              <circle cx="13.5" cy="17.5" r="2.5"/>
+              <path d="M17 4h2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-2"/>
+              <path d="M3 10h4"/>
+              <path d="M3 14h4"/>
+            </svg>
+          </div>
+          <div class="tool-card__text">
+            <h2 class="tool-card__title">Color Picker</h2>
+            <p class="tool-card__desc">Pick colors, convert between HEX, RGB and HSL formats, use eyedropper to grab colors from screen.</p>
+          </div>
+          <span class="tool-card__arrow">→</span>
+        </a>
+
+        <div class="tool-card tool-card_soon">
+          <div class="tool-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="13" height="13" rx="2"/>
+              <path d="M8 21h13"/>
+              <path d="M21 8v13"/>
+            </svg>
+          </div>
+          <div class="tool-card__text">
+            <h2 class="tool-card__title">Shadow Generator <span class="tool-card__badge">Soon</span></h2>
+            <p class="tool-card__desc">Generate CSS box-shadow with live preview and copy-ready code.</p>
+          </div>
+          <span class="tool-card__arrow">→</span>
+        </div>
+
+        <div class="tool-card tool-card_soon">
+          <div class="tool-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <path d="M3 9h18"/>
+              <path d="M3 15h18"/>
+            </svg>
+          </div>
+          <div class="tool-card__text">
+            <h2 class="tool-card__title">Gradient Generator <span class="tool-card__badge">Soon</span></h2>
+            <p class="tool-card__desc">Build CSS gradients visually and export the code instantly.</p>
+          </div>
+          <span class="tool-card__arrow">→</span>
+        </div>
+      </main>
+    </div>
+    <script src="./pages/index.js" defer></script>
+  </body>
+</html>
