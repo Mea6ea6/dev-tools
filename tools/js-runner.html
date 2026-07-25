@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function () {
+        var params = new URLSearchParams(location.search);
+        var saved = params.get("theme") || localStorage.getItem("theme") || "light";
+        if (saved === "dark") document.documentElement.setAttribute("data-theme", "dark");
+        localStorage.setItem("theme", saved);
+      })();
+    </script>
+    <link rel="stylesheet" href="./js-runner.css" />
+    <link
+      rel="shortcut icon"
+      href="../images/x-icon/__x-icon.png"
+      type="image/png"
+    />
+    <title>JS Runner — Dev Tools</title>
+  </head>
+  <body class="background">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">☀️</span>
+      <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">🌙</span>
+    </button>
+
+    <div class="page">
+      <main class="content">
+        <div class="cp-header">
+          <a class="cp-back" href="../index.html">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 12H5" />
+              <path d="M12 5l-7 7 7 7" />
+            </svg>
+            Dev Tools
+          </a>
+        </div>
+
+        <div class="runner">
+          <section class="runner__panel">
+            <div class="runner__panel-header">
+              <span>script.js</span>
+              <div class="runner__actions">
+                <button class="runner__btn runner__btn--ghost" id="clearBtn" title="Clear console">Clear</button>
+                <button class="runner__btn runner__btn--primary" id="runBtn" title="Run (Ctrl/Cmd + Enter)">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                  Run
+                </button>
+              </div>
+            </div>
+            <textarea
+              class="runner__textarea"
+              id="codeInput"
+              spellcheck="false"
+              autocapitalize="off"
+              autocorrect="off"
+            ></textarea>
+          </section>
+
+          <section class="runner__panel">
+            <div class="runner__panel-header">
+              <span>Console</span>
+              <span class="runner__status" id="runStatus"></span>
+            </div>
+            <div class="runner__console" id="consoleOutput">
+              <p class="console-line console-line--hint">Console output will appear here. <br><br>Press "Run" or "Ctrl/Cmd + Enter".</p>
+            </div>
+          </section>
+        </div>
+
+        <div class="cp-notes">
+          <p class="cp-note">🧪 Code runs inside an isolated Web Worker — it can't touch this page or your data</p>
+          <p class="cp-note">⏱️ Execution is stopped automatically after 5 seconds (protects against infinite loops)</p>
+          <p class="cp-note">💾 Your code is kept in this browser only, so it's still here next time you open the page</p>
+        </div>
+      </main>
+    </div>
+
+    <script src="../scripts/transitions.js" defer></script>
+    <script src="../scripts/theme.js" defer></script>
+    <script src="./js-runner.js" defer></script>
+  </body>
+</html>

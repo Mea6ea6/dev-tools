@@ -1,7 +1,4 @@
-/* ============================================================
-   Общее для всех страниц Dev Tools: переходы, анимации,
-   переключатель темы — визуально идентично How to JS.
-   ============================================================ */
+
 
 html { scroll-behavior: smooth; }
 
@@ -12,7 +9,7 @@ body {
   transition: background 0.25s ease, color 0.25s ease;
 }
 
-/* ---------- PAGE TRANSITIONS ---------- */
+
 @media (prefers-reduced-motion: no-preference) {
   body {
     animation: page-fade-in 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -55,7 +52,7 @@ body {
   * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
 }
 
-/* ---------- THEME TOGGLE ---------- */
+
 
 .theme-toggle {
   position: fixed;

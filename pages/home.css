@@ -7,16 +7,17 @@ body {
   font-family: var(--main-font);
 }
 
-/* ---------- HEADER (тот же паттерн, что page-header в How to JS) ---------- */
+
 
 .home-header {
-  padding: 76px 24px 32px;
+  padding: 100px 24px 56px;
   background: var(--header-bg);
+  text-align: center;
   transition: background 0.25s ease;
 }
 
 .home-header__inner {
-  max-width: 860px;
+  max-width: 640px;
   margin: 0 auto;
 }
 
@@ -30,24 +31,23 @@ body {
 }
 
 .home-title {
-  font-size: clamp(36px, 6vw, 56px);
+  font-size: clamp(42px, 8vw, 64px);
   font-weight: 700;
   font-family: var(--main-font);
   color: var(--ink);
-  margin: 0 0 14px;
+  margin: 0 0 18px;
   letter-spacing: -0.02em;
   line-height: 1.1;
 }
 
 .home-subtitle {
-  font-size: 17px;
+  font-size: 18px;
   color: var(--ink-soft);
-  max-width: 580px;
   margin: 0;
   line-height: 1.5;
 }
 
-/* ---------- TOOL LIST ---------- */
+
 
 .sections {
   max-width: 860px;
@@ -64,7 +64,8 @@ body {
   margin: 0 0 14px 4px;
 }
 
-.home-grid {
+.home-grid,
+.more-grid {
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -159,40 +160,7 @@ body {
   color: var(--accent);
 }
 
-/* ---------- ДРУГОЙ ПРОЕКТ (карточка-переход на How to JS) ---------- */
 
-.resource-cta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  background: var(--card);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 20px 22px;
-  text-decoration: none;
-  color: inherit;
-  margin: 24px 0 8px;
-  transition: background-color 0.15s ease;
-}
-.resource-cta:hover { background-color: var(--card-hover); }
-.resource-cta__icon {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-sm);
-  background: var(--accent-soft);
-  color: var(--accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.resource-cta__body { flex: 1; min-width: 0; }
-.resource-cta__title { font-size: 15.5px; font-weight: 620; color: var(--ink); }
-.resource-cta__description { font-size: 13.5px; color: var(--ink-soft); margin: 4px 0 0; }
-.resource-cta svg.resource-cta__arrow { width: 18px; height: 18px; color: var(--paper-muted); flex-shrink: 0; }
-
-/* ---------- FOOTER (визуально как page-footer в How to JS) ---------- */
 
 .footer {
   text-align: center;
@@ -204,7 +172,7 @@ body {
 }
 
 .footer__caption {
-  margin: 0 0 14px;
+  margin: 0;
   line-height: 1.5;
 }
 
@@ -213,86 +181,13 @@ body {
   text-decoration: underline;
   text-decoration-color: var(--divider);
   text-underline-offset: 2px;
-}
-
-.footer__links {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-}
-
-.footer__email {
-  color: var(--ink-soft);
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  line-height: 1;
-  font: inherit;
-  position: relative;
-}
-
-.footer__tooltip {
-  position: absolute;
-  bottom: 22px;
-  left: 50%;
-  transform: translateX(-50%);
-  will-change: transform;
-  background-color: var(--ink);
-  color: var(--bg);
-  font-size: 11px;
-  font-family: var(--main-font);
-  padding: 4px 8px;
-  border-radius: 6px;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: var(--transition);
-}
-
-.footer__tooltip::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  will-change: transform;
-  border: 5px solid transparent;
-  border-top-color: var(--ink);
-}
-
-.footer__link {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--ink-soft);
-  position: relative;
   transition: color 0.15s ease;
 }
-.footer__link:hover { color: var(--accent); }
-
-.footer__link::after {
-  content: "";
-  opacity: 0;
-  width: 100%;
-  height: 1.5px;
-  background-color: var(--accent);
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  border-radius: 20px;
-  transition: var(--transition);
+.footer__caption-highlight:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
 }
 
-@media (hover: hover) {
-  .footer__email:hover .footer__tooltip {
-    opacity: 1;
-  }
-  .footer__link:hover::after {
-    opacity: 1;
-    bottom: -2px;
-  }
-}
 @media screen and (max-width: 600px) {
   .home-header { padding: 52px 18px 28px; }
   .home-title { font-size: 28px; }
