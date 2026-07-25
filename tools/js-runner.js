@@ -90,7 +90,7 @@ function appendConsoleLine(type, text) {
 }
 
 function clearConsole() {
-  consoleOutput.innerHTML = '<p class="console-line console-line--hint">Console output will appear here — press Run or Ctrl/Cmd + Enter.</p>';
+  consoleOutput.innerHTML = '<p class="console-line console-line--hint">Console output will appear here. <br><br>Press "Run" or "Ctrl/Cmd + Enter".</p>';
   setStatus("");
 }
 
