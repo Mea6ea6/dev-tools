@@ -3,10 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function () {
+        var params = new URLSearchParams(location.search);
+        var saved = params.get("theme") || localStorage.getItem("theme") || "light";
+        if (saved === "dark") document.documentElement.setAttribute("data-theme", "dark");
+        localStorage.setItem("theme", saved);
+      })();
+    </script>
     <link rel="stylesheet" href="./color-picker.css" />
-    <title>Color Picker</title>
+    <title>Color Picker — Dev Tools</title>
   </head>
   <body class="background">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">☀️</span>
+      <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">🌙</span>
+    </button>
+
     <div class="page">
       <main class="content">
         <div class="cp-header">
@@ -213,6 +226,8 @@
       </main>
     </div>
 
+    <script src="../scripts/transitions.js" defer></script>
+    <script src="../scripts/theme.js" defer></script>
     <script src="../components/Hue.js" defer></script>
     <script src="../components/Canvas.js" defer></script>
     <script src="../components/Color.js" defer></script>

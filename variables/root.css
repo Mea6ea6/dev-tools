@@ -1,16 +1,43 @@
+/* ============================================================
+   Единая цветовая система с How to JS: светлая тема по умолчанию,
+   тёмная — через [data-theme="dark"] на <html>. Значения токенов
+   идентичны How to JS (общий бренд, общий тумблер темы), меняются
+   только шрифты — здесь Space Grotesk / JetBrains Mono.
+   ============================================================ */
+
 :root {
-    --main-font: 'Space Grotesk', sans-serif;
-    --mono-font: 'JetBrains Mono', monospace;
-    --max-width: 1440px;
+  --main-font: 'Space Grotesk', sans-serif;
+  --mono-font: 'JetBrains Mono', monospace;
+  --max-width: 1440px;
 
-    --black: #0A0A0A;
-    --dark: #141414;
-    --heavy-gray: #1E1E1E;
-    --medium-gray: #3A3A3A;
-    --light-gray: #6B6B6B;
-    --muted: #9B9B9B;
-    --white: #F5F5F5;
-    --pure-white: #FFFFFF;
+  --bg: #f5f5f7;
+  --header-bg: #ffffff;
+  --card: #ffffff;
+  --card-hover: #f7f6f5;
+  --card-active: #efeeec;
+  --ink: #1d1d1f;
+  --ink-soft: #6e6e73;
+  --paper-muted: #86868b;
+  --divider: rgba(0, 0, 0, 0.09);
+  --accent: #e2632f;
+  --accent-soft: rgba(226, 99, 47, 0.12);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.06);
+  --radius: 20px;
+  --radius-sm: 12px;
+  --transition: all 0.2s ease;
+}
 
-    --transition: all 0.2s ease;
+html[data-theme="dark"] {
+  --bg: #000000;
+  --header-bg: #000000;
+  --card: #1c1c1e;
+  --card-hover: #242426;
+  --card-active: #2c2c2e;
+  --ink: #f5f5f7;
+  --ink-soft: #98989d;
+  --paper-muted: #6e6e73;
+  --divider: rgba(255, 255, 255, 0.09);
+  --accent: #ff7a47;
+  --accent-soft: rgba(255, 122, 71, 0.16);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.4);
 }

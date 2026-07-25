@@ -1,3 +1,7 @@
+document.addEventListener('DOMContentLoaded', function () {
+  staggerChildren(document.querySelector('.home-grid'), '.stagger-item');
+});
+
 const copyButtons = document.querySelectorAll('[data-copy]');
 
 copyButtons.forEach(function(button) {

@@ -1,9 +1,10 @@
 @import url("../vendor/fonts.css");
 @import url("../vendor/normalize.css");
 @import url("../variables/root.css");
+@import url("../variables/shared.css");
 
 .background {
-  background-color: var(--dark);
+  background-color: var(--bg);
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -13,7 +14,7 @@
 .page {
   width: 100%;
   font-family: var(--main-font);
-  color: var(--white);
+  color: var(--ink);
 }
 
 .content {
@@ -38,13 +39,13 @@
   gap: 8px;
   font-size: 13px;
   font-weight: 500;
-  color: var(--muted);
+  color: var(--ink-soft);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .cp-back:hover {
-  color: var(--white);
+  color: var(--accent);
 }
 
 .cp-notes {
@@ -59,19 +60,19 @@
 
 .cp-note {
   font-size: 12px;
-  color: var(--muted);
+  color: var(--ink-soft);
   line-height: 1.4;
 }
 
 .picker {
   display: flex;
   gap: 32px;
-  background-color: var(--heavy-gray);
-  border-radius: 20px;
+  background-color: var(--card);
+  border-radius: var(--radius);
   padding: 28px;
   width: 100%;
   max-width: 820px;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--shadow);
 }
 
 .picker__left {
@@ -101,7 +102,7 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  border: 2.5px solid var(--pure-white);
+  border: 2.5px solid var(--ink);
   box-shadow: 0 0 0 1.5px rgba(0, 0, 0, 0.4);
   transform: translate(-50%, -50%);
   pointer-events: none;
@@ -131,7 +132,7 @@
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  border: 3px solid var(--pure-white);
+  border: 3px solid var(--ink);
   box-shadow:
     0 0 0 1.5px rgba(0, 0, 0, 0.3),
     0 2px 6px rgba(0, 0, 0, 0.3);
@@ -167,10 +168,10 @@
   align-items: center;
   gap: 8px;
   padding: 10px 16px;
-  background-color: #1e3a5f;
+  background-color: var(--accent-soft);
   border: none;
-  border-radius: 10px;
-  color: #60a5fa;
+  border-radius: var(--radius-sm);
+  color: var(--accent);
   font-family: var(--main-font);
   font-size: 13px;
   font-weight: 500;
@@ -181,13 +182,13 @@
 }
 
 .picker__eyedropper:hover {
-  background-color: #1e40af;
-  color: #93c5fd;
+  background-color: var(--accent);
+  color: #fff;
 }
 
 .picker__eyedropper-note {
   font-size: 11px;
-  color: var(--muted);
+  color: var(--ink-soft);
   text-align: center;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -207,7 +208,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  background-color: var(--medium-gray);
+  background-color: var(--card-hover);
   border-radius: 10px;
   padding: 10px 14px;
 }
@@ -222,14 +223,14 @@
 .picker__code-static {
   font-family: var(--mono-font);
   font-size: 13px;
-  color: var(--muted);
+  color: var(--ink-soft);
   white-space: nowrap;
 }
 
 .picker__code-num {
   font-family: var(--mono-font);
   font-size: 13px;
-  color: var(--white);
+  color: var(--ink);
   background: none;
   border: none;
   outline: none;
@@ -245,7 +246,7 @@
 }
 
 .picker__code-num:focus {
-  color: var(--pure-white);
+  color: var(--ink);
   background-color: rgba(255,255,255,0.08);
   border-radius: 3px;
 }
@@ -253,7 +254,7 @@
 .picker__code-label {
   font-size: 11px;
   font-weight: 600;
-  color: var(--muted);
+  color: var(--ink-soft);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   width: 28px;
@@ -263,7 +264,7 @@
 .picker__code-value {
   font-family: var(--mono-font);
   font-size: 13px;
-  color: var(--white);
+  color: var(--ink);
   flex: 1;
   background: none;
   border: none;
@@ -272,13 +273,13 @@
 }
 
 .picker__code-value:focus {
-  color: var(--pure-white);
+  color: var(--ink);
 }
 
 .picker__copy {
   background: none;
   border: none;
-  color: var(--muted);
+  color: var(--ink-soft);
   cursor: pointer;
   padding: 4px;
   border-radius: 6px;
@@ -290,12 +291,12 @@
 }
 
 .picker__copy:hover {
-  color: var(--white);
-  background-color: var(--light-gray);
+  color: var(--ink);
+  background-color: var(--card-active);
 }
 
 .picker__copy.copied {
-  color: #3b82f6;
+  color: var(--accent);
 }
 
 .picker__sliders {
@@ -313,7 +314,7 @@
 .picker__slider-label {
   font-size: 11px;
   font-weight: 600;
-  color: var(--muted);
+  color: var(--ink-soft);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   width: 16px;
@@ -336,7 +337,7 @@
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: var(--pure-white);
+  background: var(--ink);
   box-shadow:
     0 0 0 1.5px rgba(0, 0, 0, 0.2),
     0 2px 6px rgba(0, 0, 0, 0.3);
@@ -352,7 +353,7 @@
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: var(--pure-white);
+  background: var(--ink);
   box-shadow:
     0 0 0 1.5px rgba(0, 0, 0, 0.2),
     0 2px 6px rgba(0, 0, 0, 0.3);
@@ -390,7 +391,7 @@
 .picker__slider-value {
   font-family: var(--mono-font);
   font-size: 12px;
-  color: var(--muted);
+  color: var(--ink-soft);
   width: 28px;
   text-align: right;
   flex-shrink: 0;
@@ -405,7 +406,7 @@
 .picker__history-label {
   font-size: 11px;
   font-weight: 600;
-  color: var(--muted);
+  color: var(--ink-soft);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   flex-shrink: 0;

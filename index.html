@@ -3,6 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // Применяем тему до отрисовки страницы — без "мигания".
+      // Общая логика с How to JS: по умолчанию светлая тема.
+      (function () {
+        var params = new URLSearchParams(location.search);
+        var saved = params.get("theme") || localStorage.getItem("theme") || "light";
+        if (saved === "dark") document.documentElement.setAttribute("data-theme", "dark");
+        localStorage.setItem("theme", saved);
+      })();
+    </script>
     <link rel="stylesheet" href="./pages/home.css" />
     <link
       rel="shortcut icon"
@@ -11,18 +21,29 @@
     />
     <title>Dev Tools</title>
   </head>
-  <body class="background">
-    <div class="page">
-      <header class="home-header">
+  <body>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">☀️</span>
+      <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">🌙</span>
+    </button>
+
+    <header class="home-header">
+      <div class="home-header__inner">
+        <p class="home-eyebrow">Toolkit</p>
         <h1 class="home-title">Dev Tools</h1>
         <p class="home-subtitle">A collection of simple tools for developers</p>
-      </header>
-      <main class="home-grid">
-        <a class="tool-card" href="./tools/color-picker.html">
+      </div>
+    </header>
+
+    <main class="sections">
+      <p class="sections__label">Tools</p>
+
+      <div class="home-grid">
+        <a class="tool-card stagger-item" href="./tools/color-picker.html">
           <div class="tool-card__icon">
             <svg
-              width="28"
-              height="28"
+              width="26"
+              height="26"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -48,11 +69,11 @@
           <span class="tool-card__arrow">→</span>
         </a>
 
-        <div class="tool-card tool-card_soon">
+        <div class="tool-card tool-card_soon stagger-item">
           <div class="tool-card__icon">
             <svg
-              width="28"
-              height="28"
+              width="26"
+              height="26"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -76,11 +97,11 @@
           <span class="tool-card__arrow">→</span>
         </div>
 
-        <div class="tool-card tool-card_soon">
+        <div class="tool-card tool-card_soon stagger-item">
           <div class="tool-card__icon">
             <svg
-              width="28"
-              height="28"
+              width="26"
+              height="26"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -103,28 +124,47 @@
           </div>
           <span class="tool-card__arrow">→</span>
         </div>
-      </main>
+      </div>
 
-      <footer class="footer">
-        <div class="footer__line"></div>
-        <div class="footer__box">
-          <p class="footer__caption">
-            Developed by <span class="footer__caption-highlight">@Mea6ea6</span>
-          </p>
-          <div class="footer__links">
-            <button
-              class="footer__link footer__email"
-              data-copy="igor.sergeevich.814@gmail.com"
-            >
-              e-mail
-              <span class="footer__tooltip copy__tooltip">Click to copy</span>
-            </button>
-            <a class="footer__link" href="https://portfolio-sigma-liart-35.vercel.app/">portfolio</a>
-            <a class="footer__link" href="https://github.com/Mea6ea6">github</a>
-          </div>
+      <p class="sections__label" style="margin-top: 32px;">More from the same author</p>
+      <a class="resource-cta" href="https://how-to-js-seven.vercel.app/index.html" data-cross-app>
+        <div class="resource-cta__icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+          </svg>
         </div>
-      </footer>
-    </div>
+        <div class="resource-cta__body">
+          <span class="resource-cta__title">How to JS — open JavaScript textbook</span>
+          <p class="resource-cta__description">Explanations, code examples and interview prep, from fundamentals to async.</p>
+        </div>
+        <svg class="resource-cta__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 6 15 12 9 18"></polyline>
+        </svg>
+      </a>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__caption">
+        Dev Tools is a free set of small utilities for everyday front-end work — no sign-up, nothing to install.
+      </p>
+      <p class="footer__caption">
+        Developed by <span class="footer__caption-highlight">@Mea6ea6</span>
+      </p>
+      <div class="footer__links">
+        <button
+          class="footer__link footer__email"
+          data-copy="igor.sergeevich.814@gmail.com"
+        >
+          e-mail
+          <span class="footer__tooltip copy__tooltip">Click to copy</span>
+        </button>
+        <a class="footer__link" href="https://portfolio-sigma-liart-35.vercel.app/">portfolio</a>
+        <a class="footer__link" href="https://github.com/Mea6ea6">github</a>
+      </div>
+    </footer>
+    <script src="./scripts/transitions.js" defer></script>
+    <script src="./scripts/theme.js" defer></script>
     <script src="./pages/home.js" defer></script>
   </body>
 </html>
