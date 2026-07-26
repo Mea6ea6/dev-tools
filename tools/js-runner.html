@@ -51,22 +51,25 @@
                 </button>
               </div>
             </div>
-            <textarea
-              class="runner__textarea"
-              id="codeInput"
-              spellcheck="false"
-              autocapitalize="off"
-              autocorrect="off"
-            ></textarea>
+            <div class="runner__editor">
+              <pre class="runner__highlight" id="codeHighlight" aria-hidden="true"><code></code></pre>
+              <textarea
+                class="runner__textarea"
+                id="codeInput"
+                spellcheck="false"
+                autocapitalize="off"
+                autocorrect="off"
+              ></textarea>
+            </div>
           </section>
 
-          <section class="runner__panel">
+          <section class="runner__panel runner__panel--console">
             <div class="runner__panel-header">
               <span>Console</span>
               <span class="runner__status" id="runStatus"></span>
             </div>
             <div class="runner__console" id="consoleOutput">
-              <p class="console-line console-line--hint">Console output will appear here. <br><br>Press "Run" or "Ctrl/Cmd + Enter".</p>
+              <p class="console-line console-line--hint">Console output will appear here — press Run or Ctrl/Cmd + Enter.</p>
             </div>
           </section>
         </div>
@@ -81,6 +84,10 @@
 
     <script src="../scripts/transitions.js" defer></script>
     <script src="../scripts/theme.js" defer></script>
+    <script src="../components/Storage.js" defer></script>
+    <script src="../components/Highlight.js" defer></script>
+    <script src="../components/Console.js" defer></script>
+    <script src="../components/Runner.js" defer></script>
     <script src="./js-runner.js" defer></script>
   </body>
 </html>

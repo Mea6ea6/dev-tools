@@ -17,13 +17,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 40px 20px 60px;
   min-height: 100vh;
 }
 
 .cp-header {
   width: 100%;
-  max-width: 1000px;
+  max-width: calc(80vw + 20px);
   margin: 0 auto 20px;
   padding: 0 4px;
 }
@@ -42,7 +43,7 @@
 
 .cp-notes {
   width: 100%;
-  max-width: 1000px;
+  max-width: calc(80vw + 20px);
   margin: 16px auto 0;
   display: flex;
   flex-direction: column;
@@ -56,18 +57,17 @@
   line-height: 1.4;
 }
 
-
-
 .runner {
   display: flex;
   gap: 20px;
-  width: 100%;
-  max-width: 1000px;
   align-items: stretch;
+  box-sizing: border-box;
 }
 
 .runner__panel {
-  flex: 1;
+  flex: none;
+  width: 40vw;
+  height: 80vh;
   min-width: 0;
   display: flex;
   flex-direction: column;
@@ -75,8 +75,22 @@
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   overflow: hidden;
-  height: 480px;
+  box-sizing: border-box;
 }
+
+/* Консоль — намеренно свой фон-"терминал", не завязанный на тему сайта:
+   иначе на var(--bg) она сливалась со страницей что в светлой, что в
+   тёмной теме. Так она всегда узнаваема и хорошо читается. */
+.runner__panel--console {
+  background-color: #1a1b1e;
+}
+.runner__panel--console .runner__panel-header {
+  color: #9a9ca3;
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+.runner__panel--console .runner__status--running { color: #ffb27a; }
+.runner__panel--console .runner__status--error { color: #ff7a7a; }
+.runner__panel--console .runner__status--ok { color: #6fd88a; }
 
 .runner__panel-header {
   display: flex;
@@ -89,6 +103,7 @@
   color: var(--ink-soft);
   letter-spacing: 0.02em;
   flex-shrink: 0;
+  box-sizing: border-box;
 }
 
 .runner__status {
@@ -135,21 +150,80 @@
 }
 .runner__btn--ghost:hover { color: var(--ink); background-color: var(--card-hover); }
 
-.runner__textarea {
+.runner__editor {
+  position: relative;
   flex: 1;
-  width: 100%;
-  border: none;
-  outline: none;
-  resize: none;
+  overflow: hidden;
+}
+
+.runner__highlight,
+.runner__textarea {
+  position: absolute;
+  inset: 0;
+  margin: 0;
   padding: 18px;
-  background: transparent;
-  color: var(--ink);
+  border: none;
+  box-sizing: border-box;
   font-family: var(--mono-font);
   font-size: 13.5px;
   line-height: 1.65;
   tab-size: 2;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  overflow: auto;
+}
+
+.runner__highlight {
+  color: var(--ink);
+  background: transparent;
+  pointer-events: none;
+  overflow: hidden;
+}
+.runner__highlight code {
+  font: inherit;
+}
+
+.runner__textarea {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  outline: none;
+  background: transparent;
+  color: transparent;
+  caret-color: var(--ink);
+  z-index: 1;
 }
 .runner__textarea::placeholder { color: var(--paper-muted); }
+.runner__textarea::selection { background: var(--accent-soft); }
+
+/* Скролл в цвет акцента — тот же приём, что в How to JS */
+.runner__textarea {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--scroll-track);
+}
+.runner__textarea::-webkit-scrollbar { width: 11px; }
+.runner__textarea::-webkit-scrollbar-track { background: var(--scroll-track); }
+.runner__textarea::-webkit-scrollbar-thumb {
+  background-color: var(--accent);
+  border-radius: 999px;
+  border: 3px solid var(--scroll-track);
+}
+.runner__textarea::-webkit-scrollbar-thumb:hover { background-color: var(--ink); }
+
+/* Подсветка синтаксиса — свои токены-цвета под обе темы */
+.tok-comment { color: var(--paper-muted); font-style: italic; }
+.tok-string { color: #1a9e6d; }
+.tok-number { color: #c2622a; }
+.tok-keyword { color: var(--accent); font-weight: 600; }
+.tok-literal { color: #b5309c; }
+.tok-builtin { color: #2f7bc9; }
+.tok-function { color: #7a6ff0; }
+
+html[data-theme="dark"] .tok-string { color: #6fcf97; }
+html[data-theme="dark"] .tok-number { color: #ff9f6e; }
+html[data-theme="dark"] .tok-literal { color: #e879c9; }
+html[data-theme="dark"] .tok-builtin { color: #6fb1f0; }
+html[data-theme="dark"] .tok-function { color: #a99bff; }
 
 .runner__console {
   flex: 1;
@@ -158,11 +232,24 @@
   font-family: var(--mono-font);
   font-size: 13px;
   line-height: 1.6;
+  color: #c7c9d1;
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) #2a2c31;
 }
+.runner__console::-webkit-scrollbar { width: 11px; }
+.runner__console::-webkit-scrollbar-track { background: #2a2c31; }
+.runner__console::-webkit-scrollbar-thumb {
+  background-color: var(--accent);
+  border-radius: 999px;
+  border: 3px solid #2a2c31;
+}
+.runner__console::-webkit-scrollbar-thumb:hover { background-color: #f2f3f5; }
 
 .console-line {
   white-space: pre-wrap;
   word-break: break-word;
+  overflow-wrap: break-word;
   margin: 0 0 8px;
   padding-left: 18px;
   position: relative;
@@ -171,21 +258,22 @@
   content: "›";
   position: absolute;
   left: 0;
-  color: var(--paper-muted);
+  color: #6b6d76;
 }
 .console-line--hint {
-  color: var(--paper-muted);
+  color: #6b6d76;
   padding-left: 0;
 }
 .console-line--hint::before { content: ""; }
-.console-line--log { color: var(--ink); }
-.console-line--info::before { content: "i"; color: var(--accent); }
-.console-line--warn { color: #d99400; }
-.console-line--warn::before { content: "!"; color: #d99400; }
-.console-line--error { color: #ef4444; }
-.console-line--error::before { content: "✕"; color: #ef4444; font-size: 11px; }
+.console-line--log { color: #f2f3f5; }
+.console-line--info::before { content: "i"; color: #ffb27a; }
+.console-line--warn { color: #f0c34d; }
+.console-line--warn::before { content: "!"; color: #f0c34d; }
+.console-line--error { color: #ff7a7a; }
+.console-line--error::before { content: "✕"; color: #ff7a7a; font-size: 11px; }
 
 @media screen and (max-width: 820px) {
   .runner { flex-direction: column; }
-  .runner__panel { height: 320px; }
+  .runner__panel { width: 100%; height: 50vh; }
+  .cp-header, .cp-notes { max-width: 100%; }
 }

@@ -1,4 +1,9 @@
-
+/* ============================================================
+   Единая цветовая система с How to JS: светлая тема по умолчанию,
+   тёмная — через [data-theme="dark"] на <html>. Значения токенов
+   идентичны How to JS (общий бренд, общий тумблер темы), меняются
+   только шрифты — здесь Space Grotesk / JetBrains Mono.
+   ============================================================ */
 
 :root {
   --main-font: 'Space Grotesk', sans-serif;
@@ -20,6 +25,7 @@
   --radius: 20px;
   --radius-sm: 12px;
   --transition: all 0.2s ease;
+  --scroll-track: #ecebe9;
 }
 
 html[data-theme="dark"] {
@@ -35,4 +41,5 @@ html[data-theme="dark"] {
   --accent: #ff7a47;
   --accent-soft: rgba(255, 122, 71, 0.16);
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.4);
+  --scroll-track: #1c1c1e;
 }
